@@ -1,6 +1,7 @@
 import { React } from "react";
 import { View, Text, StyleSheet, Image, ScrollView } from "react-native";
 import { useNavigation } from "@react-navigation/native";
+import LifeStatus from "../../Components/Common/LifeStatus";
 
 export default function Start() {
     const navigation = useNavigation();
@@ -13,7 +14,10 @@ export default function Start() {
                         source={require("../../assets/icons/logo3.png")} 
                         style={styles.logo}
                     />
-                    <Text style={styles.description}>Vamos transformar sua vida em um jogo</Text>
+
+                    <LifeStatus />
+
+                    <Text style={styles.description}>Vamos transformar sua vida em um jogo, buscando sempre omelhor nível.</Text>
                 </View>
             </ScrollView>
         </View>
@@ -35,6 +39,6 @@ const styles = StyleSheet.create({
         color:"#ffffff",
         fontSize: 20,
         textAlign: "center",
-        marginVertical: 60,
+        marginVertical:  60,
     }
 })

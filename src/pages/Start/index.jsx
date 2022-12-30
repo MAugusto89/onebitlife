@@ -6,8 +6,8 @@ import DefaultButton from "../../Components/Common/DefaultButton";
 
 export default function Start() {
     const navigation = useNavigation();
-    const handleNabigationAppExplanation= ( ) => {
-        console.log("Testando o click")
+    const handleNavAppExplanation= ( ) => {
+        navigation.navigate("AppExplanation");
     };
 
     return (
@@ -25,7 +25,7 @@ export default function Start() {
 
                     <DefaultButton
                         buttonText={"Continuar"}
-                        handlePress={handleNabigationAppExplanation}
+                        handlePress={handleNavAppExplanation}
                         width={250}
                         height={50}
                     />

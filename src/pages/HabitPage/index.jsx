@@ -1,5 +1,8 @@
 import { useNavigation } from "@react-navigation/native";
-import React, { useState } from "react";
+
+import SelectHabit from "../../Components/HabitPage/SelectHabit";
+
+import React, { useState, setHabitInput } from "react";
 import {
     View,
     Text,
@@ -14,6 +17,7 @@ import { Route } from "@react-navigation/native";
 
 export default function HabitPage({ route }) {
     const navigation = useNavigation();
+    const { habitInput, setHabitInput } = useState();
     const { create, habit } = route.params;
 
     return (
@@ -30,16 +34,17 @@ export default function HabitPage({ route }) {
                         />
                     </TouchableOpacity>
                     <View style={styles.mainContent}>
-                    <Text style={styles.title}>Configurações {"\n"} de hábito</Text>
-                    <Text style={styles.inputText}>Area</Text>
-                    <View style={styles.inputContainer}>
-                        <Text style={styles.area}>{habit ?.habitArea}</Text>
-                    </View>
+                        <Text style={styles.title}>Configurações {"\n"} de hábito</Text>
+                        <Text style={styles.inputText}>Area</Text>
+                        <View style={styles.inputContainer}>
+                            <Text style={styles.area}>{habit?.habitArea}</Text>
+                        </View>
+                        <Text style={styles.inputText}>Hábito</Text>
+                        <SelectHabit habit={habit} habitInput={setHabitInput} />
                     </View>
                 </View>
             </ScrollView>
         </View>
-
     );
 }
 
@@ -63,26 +68,26 @@ const styles = StyleSheet.create({
     },
     title: {
         fontWeight: "bold",
-        textAlign:"center",
-        color:"white",
-        fontSize:30,
+        textAlign: "center",
+        color: "white",
+        fontSize: 30,
     },
-    inputText:{
-        color:"white",
-        fontSize:16,
-        marginTop:35,
-        marginBottom:10,
-        marginLeft:5,
+    inputText: {
+        color: "white",
+        fontSize: 16,
+        marginTop: 35,
+        marginBottom: 10,
+        marginLeft: 5,
     },
-    inputContainer:{
-        borderWidth:1,
-        borderColor:"#ffffff",
-        borderRadius:10,
-        paddingHorizontal:20,
-        paddingVertical:15,
+    inputContainer: {
+        borderWidth: 1,
+        borderColor: "#ffffff",
+        borderRadius: 10,
+        paddingHorizontal: 20,
+        paddingVertical: 15,
     },
     area: {
-        color:"#BBBBBB",
-        fontSize:15,
+        color: "#BBBBBB",
+        fontSize: 15,
     },
 });

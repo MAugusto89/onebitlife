@@ -6,5 +6,3 @@ export default function routes(){
     const [showHome, setShowHome] = useState("false");
     return <>{showHome === "true" ? <HomePage /> : <AllPages />}</>;
 }
-
-

@@ -3,7 +3,6 @@ import SelectHabit from "../../Components/HabitPage/SelectHabit";
 import SelectFrequency from "../../Components/HabitPage/SelectFrequency";
 import React, { useState, useEffect, useRef, setHabitInput } from "react";
 import Notification from "../../Components/HabitPage/Notification";
-import { Route } from "@react-navigation/native";
 import { Switch } from "react-native-gesture-handler";
 
 import {
@@ -22,6 +21,9 @@ export default function HabitPage({ route }) {
     const [habitInput, setHabitInput] = useState();
     const [frequencyInput, setFrequencyInput] = useState();
     const [notificationToggle, setNotificationToggle] = useState();
+    const [dayNotification, setDayNotification] = useState();
+    const [timeNotification, setTimeNotification] = useState();
+
     const { create, habit } = route.params;
 
     return (
@@ -47,12 +49,24 @@ export default function HabitPage({ route }) {
                         <SelectHabit habit={habit} habitInput={setHabitInput} />
                         <Text style={styles.inputText}>Frequência</Text>
                         <SelectFrequency habitFrequency={habit?.habitFrequency} frequencyInput={setFrequencyInput} />
-                        {frequencyInput ==="Mensal" ? null :(
+                        {frequencyInput === "Mensal" ? null : (
                             <Notification
-                            notificationToggle={notificationToggle}
-                            setNotificationToggle={setNotificationToggle}
+                                notificationToggle={notificationToggle}
+                                setNotificationToggle={setNotificationToggle}
                             />
                         )}
+
+                        {notificationToggle ? (
+                            frequencyInput === "Mensal" ? null : (
+                                <TimeDataPicker
+                                    frequency={frequencyInput}
+                                    dayNotification={dayNotification}
+                                    timeNotification={timeNotification}
+                                    setDayNotification={setDayNotification}
+                                    setTimeNotification={setTimeNotification}
+                                />
+                            )
+                        ) : null  }
                     </View>
                 </View>
             </ScrollView>
